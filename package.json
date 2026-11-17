@@ -1,0 +1,26 @@
+{
+  "name": "deepseek-nexus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DeepSeek Nexus - 本地化、科技感的 DeepSeek 网页端",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "scripts": {
+    "dev": "concurrently -n API,WEB -c cyan,magenta \"npm run dev -w server\" \"npm run dev -w web\"",
+    "build": "npm run build -w web && npm run build -w server",
+    "start": "node server/dist/index.js",
+    "import": "npm run import -w server",
+    "clean": "node -e \"require('node:fs').rmSync('web/dist',{recursive:true,force:true});require('node:fs').rmSync('server/dist',{recursive:true,force:true})\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "main": "index.js",
+  "keywords": [],
+  "type": "commonjs"
+}
